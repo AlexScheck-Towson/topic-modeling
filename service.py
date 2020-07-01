@@ -8,10 +8,11 @@ def determine_sentence_topics(ldamodel, corpus, learning_obj_list):
 		# sort the list of topics for the individual document by percentage
 		# first in list is dominant topic for document
 		sorted_topic_list = sorted(topic_list, key=lambda x: (x[1]), reverse=True)
-		print(sorted_topic_list)
 		for j, (topic_num, prop_topic) in enumerate(sorted_topic_list):
 			if j == 0: # --> dominant topic
-				learning_obj_list[i].topic_num = topic_num
+				learning_obj_list[i].primary_topic_num = topic_num
+			elif j == 1: # --> 2nd most domminant topic
+				learning_obj_list[i].secondary_topic_num = topic_num
 			else:
 				break;
 	return learning_obj_list

@@ -4,7 +4,8 @@ class LearningObject:
 		self.cuid = cuid
 		self.name = name
 		self.description = description
-		self.topic_num = -1
+		self.primary_topic_num = -1
+		self.secondary_topic_num = -1
 
 class Topic:
 	def __init__(self, number, key_words):
