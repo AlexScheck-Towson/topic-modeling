@@ -35,9 +35,11 @@ def execute_full_script(num_topics, alpha, stop_words):
 	
 	data_lemmatized, id2word, corpus = textCleaner.performClean(desc_data=desc_data, passed_stop_words=stop_words)
 	
-	lda_model = model.run_model_and_save(corpus=corpus, id2word=id2word)
+	pass_num = fileUtil.get_next_pass_num()
+	fileUtil.create_pass_dir(pass_num)
+	
+	lda_model = model.run_model_and_save(pass_num=pass_num, corpus=corpus, id2word=id2word, num_topics=num_topics, alpha=alpha)
 	
 	my_learning_objects = determine_sentence_topics(ldamodel=lda_model, corpus=corpus, learning_obj_list=my_learning_objects)
 	
-	pass_num = fileUtil.get_next_pass_num()
-	fileUtil.create_pass_dir(pass_num)
+	

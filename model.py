@@ -12,23 +12,24 @@ from classManager import Topic
 os.environ['MALLET_HOME'] = 'C:\\Users\\Alex\\Documents\\Clark-project\\mallet-2.0.8'
 mallet_path = 'C:\\Users\\Alex\\Documents\\Clark-project\\mallet-2.0.8\\bin\\mallet'
 
-mallet_lda_model_path = 'C:\\Users\\Alex\\Documents\\Clark-project\\topic-modeling\\files\\malletModel'
+def get_model_path(pass_num):
+	return "files/Pass" + str(pass_num) + "/malletModel"
 
 def run_model(corpus, id2word, num_topics=13, alpha=30):
 	lda_model = gensim.models.wrappers.LdaMallet(mallet_path, corpus=corpus, num_topics=num_topics, id2word=id2word, alpha=alpha)
 	return lda_model
 	
-def run_model_and_save(corpus, id2word, num_topics=13, alpha=30):
+def run_model_and_save(pass_num, corpus, id2word, num_topics=13, alpha=30):
 	lda_model = run_model(corpus, id2word, num_topics, alpha)
-	lda_model.save(mallet_lda_model_path)
+	lda_model.save(get_model_path(pass_num))
 	return lda_model
 
 def get_coherence(lda_model, data_lemmatized, id2word):
 	coherence_model_lda = CoherenceModel(model=lda_model, texts=data_lemmatized, dictionary=id2word, coherence='c_v')
 	return coherence_model_lda.get_coherence()
 	
-def load_model():
-	return gensim.utils.SaveLoad.load(mallet_lda_model_path)
+def load_model(pass_num):
+	return gensim.utils.SaveLoad.load(get_model_path(pass_num))
 	
 def get_topics_list(lda_model):
 	my_topics = []
