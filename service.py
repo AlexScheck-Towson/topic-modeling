@@ -45,4 +45,6 @@ def execute_full_script(num_topics, alpha, stop_words):
 	# saving to files
 	fileUtil.save_all_topics(pass_num=pass_num, topics_list=topics_list)
 	fileUtil.save_learning_objects_to_topic(pass_num=pass_num, topics_list=topics_list, learning_obj_list=my_learning_objects)
-	
+
+def clear_all_passes():
+	fileUtil.clear_all_passes()
