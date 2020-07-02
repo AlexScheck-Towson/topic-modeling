@@ -41,6 +41,8 @@ def execute_full_script(num_topics, alpha, stop_words):
 	lda_model = model.run_model_and_save(pass_num=pass_num, corpus=corpus, id2word=id2word, num_topics=num_topics, alpha=alpha)
 	my_learning_objects = determine_sentence_topics(ldamodel=lda_model, corpus=corpus, learning_obj_list=my_learning_objects)
 	topics_list = model.get_topics_list(lda_model)
-	fileUtil.save_all_topics(pass_num=pass_num, topics_list=topics_list)
 	
+	# saving to files
+	fileUtil.save_all_topics(pass_num=pass_num, topics_list=topics_list)
+	fileUtil.save_learning_objects_to_topic(pass_num=pass_num, topics_list=topics_list, learning_obj_list=my_learning_objects)
 	
