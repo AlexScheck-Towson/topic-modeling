@@ -2,6 +2,7 @@ import json
 from classManager import LearningObject
 import textCleaner
 import model
+import fileUtil
 
 def determine_sentence_topics(ldamodel, corpus, learning_obj_list):	
 	for i, topic_list in enumerate(ldamodel[corpus]):
@@ -38,3 +39,5 @@ def execute_full_script(num_topics, alpha, stop_words):
 	
 	my_learning_objects = determine_sentence_topics(ldamodel=lda_model, corpus=corpus, learning_obj_list=my_learning_objects)
 	
+	pass_num = fileUtil.get_next_pass_num()
+	fileUtil.create_pass_dir(pass_num)
