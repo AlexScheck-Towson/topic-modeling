@@ -61,3 +61,10 @@ def clear_all_passes():
 	except Exception as e:
 		traceback.print_exc(file=sys.stdout)
 		return False
+
+def get_all_pass_numbers():
+	try:
+		return fileUtil.get_all_pass_numbers()
+	except Exception as e:
+		traceback.print_exc(file=sys.stdout)
+		return False

@@ -7,12 +7,19 @@ import shutil
 def get_next_pass_num():
 	pass_dirs = [p for p in os.listdir('files') if re.match(r'Pass[0-9]+', p)]
 	max_pass_num = 0
-	for p in pass_dirs:
-		pass_num = int(p[4::])
+	for d in pass_dirs:
+		pass_num = int(d[4::])
 		if pass_num > max_pass_num:
 			max_pass_num = pass_num
 	
 	return max_pass_num + 1
+
+def get_all_pass_numbers():
+	pass_dirs = [p for p in os.listdir('files') if re.match(r'Pass[0-9]+', p)]
+	pass_nums = []
+	for d in pass_dirs:
+		pass_nums.append(int(d[4::]))
+	return pass_nums
 	
 def get_pass_dir_path(pass_num):
 	return path.join("files", "Pass" + str(pass_num))
