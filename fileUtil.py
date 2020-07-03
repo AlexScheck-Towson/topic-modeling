@@ -51,3 +51,6 @@ def clear_all_passes():
 	for d in pass_dirs:
 		dir_to_remove = path.join("files", d)
 		shutil.rmtree(dir_to_remove)
+
+def clear_single_pass(pass_num):
+	shutil.rmtree(get_pass_dir_path(pass_num))

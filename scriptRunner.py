@@ -12,7 +12,8 @@ alpha = 30
 num_topics =13
 
 def main():
-	service.execute_full_script(num_topics=num_topics, alpha=alpha, stop_words=stop_words)
+	result = service.execute_full_script(num_topics=num_topics, alpha=alpha, stop_words=stop_words)
+	print(result)
 
 # END OF MAIN FUNCTION
 
