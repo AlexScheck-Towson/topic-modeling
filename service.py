@@ -55,4 +55,9 @@ def execute_full_script(num_topics, alpha, stop_words):
 		return -1
 
 def clear_all_passes():
-	fileUtil.clear_all_passes()
+	try:
+		fileUtil.clear_all_passes()
+		return True
+	except Exception as e:
+		traceback.print_exc(file=sys.stdout)
+		return False

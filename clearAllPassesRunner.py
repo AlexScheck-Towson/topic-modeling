@@ -1,3 +1,4 @@
 import service
 
-service.clear_all_passes()
+result = service.clear_all_passes()
+print(result)
