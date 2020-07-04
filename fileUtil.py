@@ -3,7 +3,7 @@ import os
 from os import path
 import json
 import shutil
-from classManager import Topic
+from classManager import LearningObject, Topic
 
 def get_next_pass_num():
 	pass_dirs = [p for p in os.listdir('files') if re.match(r'Pass[0-9]+', p)]
@@ -76,4 +76,10 @@ def load_topics_for_pass(pass_num):
 def load_learning_objects_for_topic(pass_num, topic_num):
 	with open(get_topic_file_path(pass_num, topic_num), encoding='utf8') as lo_file:
 		lo_data = json.load(lo_file)
-	return lo_data['learning_objects']
+	topic_los = []
+	for lo in lo_data['learning_objects']:
+		temp_lo = LearningObject(lo['id'], lo['cuid'], lo['name'], lo['description'])
+		temp_lo.primary_topic_num = lo['primary_topic_num']
+		temp_lo.secondary_topic_num = lo['secondary_topic_num']
+		topic_los.append(temp_lo)
+	return topic_los
