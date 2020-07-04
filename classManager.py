@@ -11,4 +11,4 @@ class Topic:
 	def __init__(self, number, key_words):
 		self.number = number
 		self.key_words = key_words
-		self.learning_object_texts = []
+		self.total_lo_num = 0
