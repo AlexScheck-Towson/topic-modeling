@@ -25,7 +25,6 @@ def execute_full_script(num_topics, alpha, stop_words):
 	
 	try:
 		fileUtil.create_pass_dir(pass_num)
-		from_file = []
 
 		with open('learning-objects.json', encoding='utf8') as data_file:
 			from_file = json.load(data_file)
@@ -65,6 +64,13 @@ def clear_all_passes():
 def get_all_pass_numbers():
 	try:
 		return fileUtil.get_all_pass_numbers()
+	except Exception as e:
+		traceback.print_exc(file=sys.stdout)
+		return False
+
+def load_topics_for_pass(pass_num):
+	try:
+		return fileUtil.load_topics_for_pass(pass_num)
 	except Exception as e:
 		traceback.print_exc(file=sys.stdout)
 		return False

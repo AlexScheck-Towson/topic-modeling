@@ -25,7 +25,7 @@ def get_pass_dir_path(pass_num):
 	return path.join("files", "Pass" + str(pass_num))
 
 def get_topic_file_path(pass_num, topic_num):
-	return get_pass_dir_path(pass_num) + "/topic_" + str(topic_num) + ".json"
+	return path.join(get_pass_dir_path(pass_num), "topic_" + str(topic_num) + ".json")
 	
 def create_pass_dir(pass_num):
 	try:
@@ -61,3 +61,10 @@ def clear_all_passes():
 
 def clear_single_pass(pass_num):
 	shutil.rmtree(get_pass_dir_path(pass_num))
+
+
+def load_topics_for_pass(pass_num):
+	path_to_file = path.join(get_pass_dir_path(pass_num), "all_topics.json")
+	with open(path_to_file, encoding='utf8') as topics_file:
+		from_file = json.load(topics_file)
+	return from_file['topics']
