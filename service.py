@@ -74,3 +74,10 @@ def load_topics_for_pass(pass_num):
 	except Exception as e:
 		traceback.print_exc(file=sys.stdout)
 		return False
+
+def load_learning_objects_for_topic(pass_num, topic_num):
+	try:
+		return fileUtil.load_learning_objects_for_topic(pass_num, topic_num)
+	except Exception as e:
+		traceback.print_exc(file=sys.stdout)
+		return False

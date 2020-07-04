@@ -51,7 +51,7 @@ def save_learning_objects_to_topic(pass_num, topics_list, learning_obj_list):
 			if lo.primary_topic_num == topic_num:
 				los_in_topic.append(lo)
 		with open(topic_file_path, 'w') as outfile:
-			json.dump({'learning_objects': [o.__dict__ for o in topics_list]}, outfile)
+			json.dump({'learning_objects': [o.__dict__ for o in los_in_topic]}, outfile)
 
 def clear_all_passes():
 	pass_dirs = [p for p in os.listdir('files') if re.match(r'Pass[0-9]+', p)]
@@ -68,3 +68,8 @@ def load_topics_for_pass(pass_num):
 	with open(path_to_file, encoding='utf8') as topics_file:
 		from_file = json.load(topics_file)
 	return from_file['topics']
+
+def load_learning_objects_for_topic(pass_num, topic_num):
+	with open(get_topic_file_path(pass_num, topic_num), encoding='utf8') as lo_file:
+		lo_data = json.load(lo_file)
+	return lo_data['learning_objects']
