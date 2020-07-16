@@ -8,6 +8,11 @@ from classManager import Topic
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/passNums", methods=["GET"])
+def getPassNums():
+	passNums = service.get_all_pass_numbers()
+	return json.dumps(passNums)
+
 @app.route("/topics", methods=["POST"])
 def getTopicsForPass():
 	data = request.get_json()
