@@ -13,6 +13,11 @@ def getPassNums():
 	passNums = service.get_all_pass_numbers()
 	return json.dumps(passNums)
 
+@app.route("/clearPasses", methods=["GET"])
+def clearPasses():
+	result = service.clear_all_passes()
+	return json.dumps(result)
+
 @app.route("/topics", methods=["POST"])
 def getTopicsForPass():
 	data = request.get_json()
