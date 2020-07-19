@@ -18,6 +18,15 @@ def clearPasses():
 	result = service.clear_all_passes()
 	return json.dumps(result)
 
+@app.route("/execute", methods=["POST"])
+def execute():
+	data = request.get_json()
+	num_topics = int(data['numTopics'])
+	alpha = int(data['alpha'])
+	stop_words = data['stopWords']
+	result = service.execute_full_script(num_topics=num_topics, alpha=alpha, stop_words=stop_words)
+	return json.dumps(result)
+
 @app.route("/topics", methods=["POST"])
 def getTopicsForPass():
 	data = request.get_json()
