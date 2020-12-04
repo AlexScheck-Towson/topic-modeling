@@ -1,3 +1,6 @@
+'''
+This script manages the entire topic modeling script
+'''
 import json
 import traceback
 import sys

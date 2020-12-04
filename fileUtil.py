@@ -1,3 +1,6 @@
+'''
+This script handles the file system actions
+'''
 import re
 import os
 from os import path

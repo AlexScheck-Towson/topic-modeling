@@ -1,3 +1,6 @@
+'''
+This script runs the topic modeling script from the command line
+'''
 import service
 
 stop_words = []
@@ -8,6 +11,7 @@ stop_words.extend(['teach', 'class', 'learn', 'exercise', 'lecture', 'activity',
 stop_words.extend(['create', 'explain', 'environment', 'complete', 'hand', 'review', 'nanomodule', 'unit', 'also'])
 stop_words.extend(['technique', 'tool', 'perform', 'principle', 'understand', 'challenge', 'understanding', 'intend'])
 stop_words.extend(['topic', 'implement', 'provide', 'application', 'layer', 'cybersecurity'])
+
 
 
 alpha = 30

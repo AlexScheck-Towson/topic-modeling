@@ -1,3 +1,7 @@
+'''
+This script starts a service on port 5002 and exposes the below endpoints
+allowing the topic modeling script to be executed from a browser
+'''
 from flask import Flask, request
 from flask_jsonpify import jsonify
 from flask_cors import CORS, cross_origin

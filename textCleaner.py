@@ -1,3 +1,6 @@
+'''
+This script manages all of the data prep actions
+'''
 from html.parser import HTMLParser
 import re
 # NLTK Stop Words

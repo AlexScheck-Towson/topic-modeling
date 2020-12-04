@@ -1,3 +1,6 @@
+'''
+This script simply holds the LearningObject and Topic classes
+'''
 class LearningObject:
 	def __init__(self, id, cuid, name, description):
 		self.id = id

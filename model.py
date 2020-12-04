@@ -1,3 +1,7 @@
+'''
+This script manages the actions performed with the topic modeling algorithm
+and the model that it creates
+'''
 # Gensim
 import gensim
 import gensim.corpora as corpora
@@ -6,14 +10,17 @@ from gensim.utils import SaveLoad
 from gensim.models import CoherenceModel
 
 import os
+from os import path
 from classManager import Topic
 
 # Mallet
-os.environ['MALLET_HOME'] = 'C:\\Users\\Alex\\Documents\\Clark-project\\mallet-2.0.8'
-mallet_path = 'C:\\Users\\Alex\\Documents\\Clark-project\\mallet-2.0.8\\bin\\mallet'
+currentDir = os.getcwd()
+parentDir = os.path.dirname(currentDir)
+os.environ['MALLET_HOME'] = path.join(parentDir, 'mallet-2.0.8')
+mallet_path = path.join(parentDir, 'mallet-2.0.8', 'bin', 'mallet')
 
 def get_model_path(pass_num):
-	return "files/Pass" + str(pass_num) + "/malletModel"
+	return path.join(currentDir, 'files', 'Pass' + str(pass_num),  'malletModel')
 
 def run_model(corpus, id2word, num_topics=13, alpha=30):
 	lda_model = gensim.models.wrappers.LdaMallet(mallet_path, corpus=corpus, num_topics=num_topics, id2word=id2word, alpha=alpha)
